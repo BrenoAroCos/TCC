@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/app_images.dart';
+
+import 'answers.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,36 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Stack(
-              alignment: AlignmentDirectional.center,
-              children: [
-                Container(width: 100, height: 100, color: containerSquareColor),
-                Container(
-                  width: 200,
-                  height: 200,
-                  color: Colors.transparent,
-                  child: DragTarget<Color>(
-                    builder: (
-                      BuildContext context,
-                      List accepted,
-                      List rejected,
-                    ) {
-                      return Container();
-                    },
-                    onWillAccept: (color) {
-                      return color == Colors.red;
-                    },
-                    onAccept: (color) {
-                      setState(
-                        () {
-                          containerSquareColor = color;
-                        },
-                      );
-                    },
-                  ),
-                )
-              ],
-            ),
+            Alvo(onSuccess: _incrementCounter,),
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -85,12 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            Draggable<Color>(
-              data: Colors.red,
-              child: Bloco(),
-              feedback:
-                  Container(width: 100, height: 100, color: Colors.redAccent),
-              childWhenDragging: Container(),
+            Row(
+              children: [
+                Option(assetString: AppImages.circulo, resposta: Resposta.circulo,),
+                Option(assetString: AppImages.quadrado, resposta: Resposta.quadrado,),
+                Option(assetString: AppImages.passaro, resposta: Resposta.passaro,),
+              ],
             )
           ],
         ),
@@ -100,6 +74,68 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class Option extends StatelessWidget {
+  const Option({
+    required this.assetString,
+    required this.resposta,
+    Key? key,
+  }) : super(key: key);
+
+  final String assetString;
+  final Resposta resposta;
+
+  @override
+  Widget build(BuildContext context) {
+    return Draggable<Resposta>(
+      data: resposta,
+      child: Container(width:50, height: 50, child: Image.asset(assetString)),
+      feedback:
+      Container(width: 100, height: 100, color: Colors.redAccent),
+      childWhenDragging: Container(),
+    );
+  }
+}
+
+class Alvo extends StatelessWidget {
+
+  Alvo({
+    required this.onSuccess,
+    Key? key,
+  }) : super(key: key);
+
+  final Function() onSuccess;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: AlignmentDirectional.center,
+      children: [
+        Container(width: 300, height: 300, child: Image.asset(AppImages.ishiharaPlate)),
+        Container(
+          width: 200,
+          height: 200,
+          color: Colors.transparent,
+          child: DragTarget<Resposta>(
+            builder: (
+              BuildContext context,
+              List accepted,
+              List rejected,
+            ) {
+              return Container();
+            },
+            onWillAccept: (resposta) {
+              return resposta == Resposta.passaro;
+            },
+            onAccept: (color) {
+              onSuccess();
+            },
+          ),
+        )
+      ],
     );
   }
 }
