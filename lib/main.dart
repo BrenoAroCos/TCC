@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tcc/app_images.dart';
 import 'package:tcc/teste_bloc.dart';
 
-import 'answers.dart';
 import 'first_test.dart';
 
 void main() {
@@ -20,7 +18,43 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BlocProvider<TesteBloc>(create: (context) => TesteBloc(), child: TestPage(title: 'TCC'))
+      home: const IntroPage(
+        title: 'Intro',
+      ),
     );
+  }
+}
+
+class IntroPage extends StatefulWidget {
+  const IntroPage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  State<IntroPage> createState() => _IntroPageState();
+}
+
+class _IntroPageState extends State<IntroPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Align(
+          alignment: AlignmentDirectional.center,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              OutlinedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return BlocProvider<TesteBloc>(create: (context) => TesteBloc(), child: TestPage(title: 'TCC'));
+                    }));
+                  },
+                  child: Text("Próxima Tela"))
+            ],
+          ),
+        ),
+        appBar: AppBar(
+          title: Text(widget.title),
+        ));
   }
 }
