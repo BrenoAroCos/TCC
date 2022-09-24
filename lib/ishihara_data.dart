@@ -2,7 +2,7 @@ import 'answers.dart';
 
 class IshiharaData{
   final String pictureAsset;
-  final String ishiharaAsset;
+  final String? ishiharaAsset;
 
-  IshiharaData(this.pictureAsset, this.ishiharaAsset);
+  IshiharaData({ required this.pictureAsset, required this.ishiharaAsset});
 }

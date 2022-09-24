@@ -7,16 +7,16 @@ import 'package:tcc/teste_bloc.dart';
 import 'App_images.dart';
 import 'answers.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class TestPage extends StatefulWidget {
+  const TestPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<TestPage> createState() => _TestPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _TestPageState extends State<TestPage> {
   int _counter = 0;
   Color containerSquareColor = Colors.black;
 
@@ -55,10 +55,6 @@ class _MyHomePageState extends State<MyHomePage> {
       }
       return Container();
     });
-
-
-
-
   }
 }
 
@@ -74,7 +70,7 @@ class Option extends StatelessWidget {
   Widget build(BuildContext context) {
     return Draggable<IshiharaData>(
       data: ishiharaData,
-      child: Container(width:50, height: 50, child: Image.asset(ishiharaData.pictureAsset)),
+      child: Container(width:50, height: 50, child: Image.asset(ishiharaData.pictureAsset, width:50, height:50)),
       feedback:
       Container(width: 100, height: 100, color: Colors.redAccent),
       childWhenDragging: Container(),
@@ -98,7 +94,7 @@ class Alvo extends StatelessWidget {
     return Stack(
       alignment: AlignmentDirectional.center,
       children: [
-        Container(width: 300, height: 300, child: Image.asset(ishiharaData.ishiharaAsset)),
+        Container(width: 300, height: 300, child: Image.asset(ishiharaData.ishiharaAsset!, width:300, height:300)),
         Container(
           width: 200,
           height: 200,

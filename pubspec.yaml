@@ -24,4 +24,9 @@ dev_dependencies:
 flutter:
   assets:
     - images/
+    - images/baseImages/
+    - images/colorblindOnlyTests/
+    - images/defaultPLates/
+    - images/deuteranopiaPlates/
+    - images/protanopiaPlates/
   uses-material-design: true

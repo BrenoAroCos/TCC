@@ -22,12 +22,12 @@ class TesteBloc extends Cubit <TesteState>{
 
 
   final List<IshiharaData> ishiharaList = [
-    IshiharaData( AppImages.circulo, AppImages.circulo),
-    IshiharaData( AppImages.passaro, AppImages.ishiharaPlate),
-    IshiharaData(AppImages.quadrado, AppImages.quadrado),
+    IshiharaData( pictureAsset: AppImages.picole, ishiharaAsset: AppImages.gPicole2),
+    IshiharaData( pictureAsset: AppImages.aviao, ishiharaAsset: null),
+    IshiharaData( pictureAsset: AppImages.aviao, ishiharaAsset: null),
   ];
 
   void generateTest(){
-    emit(TesteLoadedState(ishiharaList[1], ishiharaList));
+    emit(TesteLoadedState(ishiharaList[0], ishiharaList));
   }
 }
