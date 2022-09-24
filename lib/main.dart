@@ -46,10 +46,10 @@ class _IntroPageState extends State<IntroPage> {
               OutlinedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return BlocProvider<TesteBloc>(create: (context) => TesteBloc(), child: TestPage(title: 'TCC'));
+                      return BlocProvider<TesteBloc>(create: (context) => TesteBloc(), child: const TestPage(title: 'TCC'));
                     }));
                   },
-                  child: Text("Próxima Tela"))
+                  child: const Text("Próxima Tela"))
             ],
           ),
         ),

@@ -1,4 +1,4 @@
-enum Resposta{
+enum Resposta {
   passaro,
   circulo,
   quadrado,

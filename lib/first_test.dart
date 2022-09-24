@@ -1,12 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcc/ishihara_data.dart';
 import 'package:tcc/teste_bloc.dart';
-
-import 'App_images.dart';
-import 'answers.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({Key? key, required this.title}) : super(key: key);
@@ -29,10 +24,10 @@ class _TestPageState extends State<TestPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TesteBloc, TesteState>(builder: (context, state){
-      if(state is TesteLoadingState){
+    return BlocBuilder<TesteBloc, TesteState>(builder: (context, state) {
+      if (state is TesteLoadingState) {
         return Container();
-      }else if (state is TesteLoadedState){
+      } else if (state is TesteLoadedState) {
         return Scaffold(
           appBar: AppBar(
             title: Text(widget.title),
@@ -41,13 +36,24 @@ class _TestPageState extends State<TestPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Alvo(onSuccess: _incrementCounter, ishiharaData: state.target,),
+                Alvo(
+                  onSuccess: _incrementCounter,
+                  ishiharaData: state.target,
+                ),
                 Text(
                   '$_counter',
                   style: Theme.of(context).textTheme.headline4,
                 ),
-                Row(
-                  children: state.options.map((e) => Option(ishiharaData: e)).toList(),
+                Flexible(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: state.options
+                        .map((e) => Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Option(ishiharaData: e),
+                            ))
+                        .toList(),
+                  ),
                 )
               ],
             ),
@@ -60,34 +66,65 @@ class _TestPageState extends State<TestPage> {
 }
 
 class Option extends StatelessWidget {
-   Option({
+  const Option({
     required this.ishiharaData,
     Key? key,
   }) : super(key: key);
 
- IshiharaData ishiharaData;
+  final IshiharaData ishiharaData;
 
   @override
   Widget build(BuildContext context) {
     return Draggable<IshiharaData>(
       data: ishiharaData,
-      child: Container(width:50, height: 50, child: Image.asset(ishiharaData.pictureAsset, width:50, height:50)),
-      feedback:
-      Container(width: 100, height: 100, color: Colors.redAccent),
-      childWhenDragging: Container(),
+      feedback: _OptionImage(
+        ishiharaData: ishiharaData,
+        alpha: 0.5,
+      ),
+      childWhenDragging: _OptionImage(
+        ishiharaData: ishiharaData,
+        alpha: 1.0,
+      ),
+      child: _OptionImage(
+        ishiharaData: ishiharaData,
+        alpha: 1.0,
+      ),
+    );
+  }
+}
+
+class _OptionImage extends StatelessWidget {
+  const _OptionImage({
+    Key? key,
+    required this.ishiharaData,
+    required this.alpha,
+  }) : super(key: key);
+
+  final IshiharaData ishiharaData;
+  final double alpha;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 100,
+      height: 100,
+      child: Image.asset(
+        ishiharaData.pictureAsset,
+        fit: BoxFit.fill,
+        opacity: AlwaysStoppedAnimation(alpha),
+      ),
     );
   }
 }
 
 class Alvo extends StatelessWidget {
-
-  Alvo({
+  const Alvo({
     required this.onSuccess,
     required this.ishiharaData,
     Key? key,
   }) : super(key: key);
 
-  IshiharaData ishiharaData;
+  final IshiharaData ishiharaData;
   final Function() onSuccess;
 
   @override
@@ -95,17 +132,17 @@ class Alvo extends StatelessWidget {
     return Stack(
       alignment: AlignmentDirectional.center,
       children: [
-        Container(width: 300, height: 300, child: Image.asset(ishiharaData.ishiharaAsset!, width:300, height:300)),
+        SizedBox(width: 300, height: 300, child: Image.asset(ishiharaData.ishiharaAsset!, width: 300, height: 300)),
         Container(
           width: 200,
           height: 200,
           color: Colors.transparent,
           child: DragTarget<IshiharaData>(
             builder: (
-                BuildContext context,
-                List accepted,
-                List rejected,
-                ) {
+              BuildContext context,
+              List accepted,
+              List rejected,
+            ) {
               return Container();
             },
             onWillAccept: (resposta) {
@@ -119,19 +156,5 @@ class Alvo extends StatelessWidget {
         )
       ],
     );
-  }
-}
-
-class Bloco extends StatelessWidget {
-  Bloco({
-    Key? key,
-    required this.color,
-  }) : super(key: key);
-
-  Color color = Colors.black;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(width: 100, height: 100, color: color);
   }
 }
