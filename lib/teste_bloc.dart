@@ -1,30 +1,34 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tcc/app_images.dart';
-import 'package:tcc/ishihara_data.dart';
+import 'package:tcc/test_cases.dart';
+import 'package:tcc/test_data.dart';
 
 abstract class TesteState {}
 
 class TesteLoadingState extends TesteState {}
 
 class TesteLoadedState extends TesteState {
-  final IshiharaData target;
-  final List<IshiharaData> options;
+  final TestData testData;
 
-  TesteLoadedState(this.target, this.options);
+  TesteLoadedState(this.testData);
 }
 
 class TesteBloc extends Cubit<TesteState> {
   TesteBloc() : super(TesteLoadingState()) {
-    generateTest();
+    testIndex = 0;
+    _generateTest(testCases[testIndex]);
   }
 
-  final List<IshiharaData> ishiharaList = [
-    IshiharaData(pictureAsset: AppImages.picole, ishiharaAsset: null),
-    IshiharaData(pictureAsset: AppImages.galinha, ishiharaAsset: null),
-    IshiharaData(pictureAsset: AppImages.aviao, ishiharaAsset: AppImages.gAviao1),
-  ];
+  int testIndex = 0;
 
-  void generateTest() {
-    emit(TesteLoadedState(ishiharaList[2], ishiharaList));
+  bool get hasNextTest => testIndex < testCases.length - 1;
+
+  void nextTest() {
+    testIndex++;
+    _generateTest(testCases[testIndex]);
+  }
+
+  void _generateTest(TestData testData) {
+    assert(testData.options.contains(testData.target));
+    emit(TesteLoadedState(testData));
   }
 }

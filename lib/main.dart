@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tcc/teste_bloc.dart';
 
-import 'first_test.dart';
+import 'test_page.dart';
 
 void main() {
   runApp(const MyApp());

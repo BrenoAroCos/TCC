@@ -16,12 +16,6 @@ class _TestPageState extends State<TestPage> {
   int _counter = 0;
   Color containerSquareColor = Colors.black;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TesteBloc, TesteState>(builder: (context, state) {
@@ -37,17 +31,19 @@ class _TestPageState extends State<TestPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Alvo(
-                  onSuccess: _incrementCounter,
-                  ishiharaData: state.target,
-                ),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.headline4,
+                  onSuccess: () {
+                    if (context.read<TesteBloc>().hasNextTest) {
+                      context.read<TesteBloc>().nextTest();
+                    } else {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  ishiharaData: state.testData.target,
                 ),
                 Flexible(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: state.options
+                    children: state.testData.options
                         .map((e) => Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Option(ishiharaData: e),
@@ -150,7 +146,6 @@ class Alvo extends StatelessWidget {
             },
             onAccept: (color) {
               onSuccess();
-              context.read<TesteBloc>().generateTest(); //criar um método para gerenciar a criação das telas.
             },
           ),
         )
