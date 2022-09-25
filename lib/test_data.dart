@@ -6,15 +6,17 @@ class TestData {
 
   final bool deuteranopia;
   final bool protanopia;
-  final bool tricromasia;
+  final bool tricromacia;
   final bool invertedTest;
+  final bool everyoneSees;
 
   TestData({
     required this.target,
     required this.options,
     this.deuteranopia = false,
     this.protanopia = false,
-    this.tricromasia = false,
+    this.tricromacia = false,
     this.invertedTest = false,
+    this.everyoneSees = false,
   });
 }

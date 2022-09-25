@@ -31,4 +31,5 @@ flutter:
     - images/defaultPlates/
     - images/deuteranopiaPlates/
     - images/protanopiaPlates/
+    - images/everyoneSees/
   uses-material-design: true
