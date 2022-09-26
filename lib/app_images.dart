@@ -95,4 +95,8 @@ class AppImages {
 
   //Only colorblind people see
   static const String nTesoura = 'images/colorblindOnlyTests/NTesoura.png';
+
+  //Start page
+  static const String appIcon = 'images/startPage/App icon.png';
+  static const String playIcon = 'images/startPage/playIcon.png';
 }

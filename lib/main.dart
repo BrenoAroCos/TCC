@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tcc/app_images.dart';
 import 'package:tcc/teste_bloc.dart';
 
 import 'test_page.dart';
@@ -43,13 +44,32 @@ class _IntroPageState extends State<IntroPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              OutlinedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return BlocProvider<TesteBloc>(create: (context) => TesteBloc(), child: const TestPage(title: 'TCC'));
-                    }));
-                  },
-                  child: const Text("Próxima Tela"))
+              Image.asset(
+                AppImages.appIcon,
+                height: 300,
+                width: 300,
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              SizedBox(
+                  height: 80,
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return BlocProvider<TesteBloc>(
+                            create: (context) => TesteBloc(),
+                            child: const TestPage(title: 'TCC'));
+                      }));
+                    },
+                    icon:
+                        Image.asset(AppImages.playIcon, width: 50, height: 50),
+                    label: const Text(
+                      "Iniciar Teste",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  )),
             ],
           ),
         ),

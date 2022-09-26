@@ -32,6 +32,7 @@ flutter:
     - images/deuteranopiaPlates/
     - images/protanopiaPlates/
     - images/everyoneSees/
+    - images/startPage/
     - instructionsAssets/
     - instructionsAssets/gifs/
   uses-material-design: true
