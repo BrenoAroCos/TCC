@@ -41,6 +41,10 @@ class TesteBloc extends Cubit<TesteState> {
     }
   }
 
+  String get getResultString {
+    return "RESULTADOS";
+  }
+
   void nextTest() {
     testIndex++;
     _generateTest(testCases[testIndex]);

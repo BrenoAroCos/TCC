@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tcc/app_images.dart';
 import 'package:tcc/ishihara_data.dart';
+import 'package:tcc/result_page.dart';
 import 'package:tcc/teste_bloc.dart';
 
 class TestPage extends StatefulWidget {
@@ -35,19 +36,11 @@ class _TestPageState extends State<TestPage> {
                   child: Alvo(
                     onSuccess: () {
                       context.read<TesteBloc>().onSucces();
-                      if (context.read<TesteBloc>().hasNextTest) {
-                        context.read<TesteBloc>().nextTest();
-                      } else {
-                        Navigator.of(context).pop();
-                      }
+                      checkForNextPage();
                     },
                     onReject: () {
                       context.read<TesteBloc>().onFailure();
-                      if (context.read<TesteBloc>().hasNextTest) {
-                        context.read<TesteBloc>().nextTest();
-                      } else {
-                        Navigator.of(context).pop();
-                      }
+                      checkForNextPage();
                     },
                     ishiharaData: state.testData.target,
                   ),
@@ -64,29 +57,20 @@ class _TestPageState extends State<TestPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric( vertical: 15.0 ),
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
                   child: SizedBox(
                     height: 80,
                     child: OutlinedButton.icon(
                       onPressed: () {
                         context.read<TesteBloc>().onFailure();
-                        if (context.read<TesteBloc>().hasNextTest) {
-                          context.read<TesteBloc>().nextTest();
-                        } else {
-                          Navigator.of(context).pop();
-                        }
+                        checkForNextPage();
                       },
-                      icon:
-                        Image.asset(AppImages.skipIcon, width: 50, height: 50),
+                      icon: Image.asset(AppImages.skipIcon, width: 50, height: 50),
                       label: const Text(
                         "Pular",
                         style: TextStyle(color: Colors.black),
                       ),
-                      style: ButtonStyle(
-                          side: MaterialStateProperty.all(const BorderSide(
-                              color: Colors.black,
-                              width: 3.0,
-                              style: BorderStyle.solid))),
+                      style: ButtonStyle(side: MaterialStateProperty.all(const BorderSide(color: Colors.black, width: 3.0, style: BorderStyle.solid))),
                     ),
                   ),
                 )
@@ -97,6 +81,21 @@ class _TestPageState extends State<TestPage> {
       }
       return Container();
     });
+  }
+
+  void checkForNextPage() {
+    if (context.read<TesteBloc>().hasNextTest) {
+      context.read<TesteBloc>().nextTest();
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) {
+            return ResultPage(result: context.read<TesteBloc>().getResultString);
+          },
+        ),
+      );
+    }
   }
 }
 
@@ -188,7 +187,7 @@ class Alvo extends StatelessWidget {
             onAccept: (resposta) {
               if (resposta == ishiharaData) {
                 onSuccess();
-              }else{
+              } else {
                 onReject();
               }
             },
