@@ -196,7 +196,7 @@ final List<TestData> testCases = [
     target: gSino1,
     options: [
       tesoura,
-      picole,
+      gSino1,
       espatula,
     ],
     protanopia: true,
