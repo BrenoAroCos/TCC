@@ -1,3 +1,4 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:tcc/ishihara_data.dart';
 
 class TestData {

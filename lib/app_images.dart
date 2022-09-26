@@ -63,7 +63,7 @@ class AppImages {
   static const String pPicole = 'images/protanopiaPlates/PPicole.png';
   static const String pRolo = 'images/protanopiaPlates/PRolo.png';
   static const String pSino = 'images/protanopiaPlates/PSino.png';
-  static const String pTesoura = 'images/protanopiaPlates/PTesoura.png';
+  static const String pTesoura = 'images/protanopiaPlates/pTesoura.png';
 
   //Deuteranopy plates
   static const String dAviao = 'images/deuteranopiaPlates/DAviao.png';
