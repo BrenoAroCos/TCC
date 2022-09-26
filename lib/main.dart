@@ -69,6 +69,11 @@ class _IntroPageState extends State<IntroPage> {
                       "Iniciar Teste",
                       style: TextStyle(color: Colors.black),
                     ),
+                    style: ButtonStyle(
+                        side: MaterialStateProperty.all(const BorderSide(
+                            color: Colors.black,
+                            width: 3.0,
+                            style: BorderStyle.solid))),
                   )),
             ],
           ),

@@ -13,7 +13,6 @@ class TestPage extends StatefulWidget {
 }
 
 class _TestPageState extends State<TestPage> {
-  int _counter = 0;
   Color containerSquareColor = Colors.black;
 
   @override
@@ -32,6 +31,7 @@ class _TestPageState extends State<TestPage> {
               children: <Widget>[
                 Alvo(
                   onSuccess: () {
+                    context.read<TesteBloc>().onSucces();
                     if (context.read<TesteBloc>().hasNextTest) {
                       context.read<TesteBloc>().nextTest();
                     } else {
@@ -39,6 +39,7 @@ class _TestPageState extends State<TestPage> {
                     }
                   },
                   onReject: () {
+                    context.read<TesteBloc>().onFailure();
                     if (context.read<TesteBloc>().hasNextTest) {
                       context.read<TesteBloc>().nextTest();
                     } else {

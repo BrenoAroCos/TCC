@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tcc/result_data.dart';
 import 'package:tcc/test_cases.dart';
 import 'package:tcc/test_data.dart';
 
@@ -20,7 +21,25 @@ class TesteBloc extends Cubit<TesteState> {
 
   int testIndex = 0;
 
+  ResultData resultData = ResultData();
+
   bool get hasNextTest => testIndex < testCases.length - 1;
+
+  void onFailure(){
+    final testCase = testCases[testIndex];
+    if (testCase.everyoneSees) resultData.everyoneSees++;
+    if (testCase.deuteranopia) resultData.deuteranopia++;
+    if (testCase.protanopia) resultData.protanopia++;
+    if (testCase.tricromacia) resultData.tricromacia++;
+  }
+
+  void onSucces(){
+    final testCase = testCases[testIndex];
+    if (testCase.invertedTest){
+       resultData.protanopia++;
+       resultData.deuteranopia++;
+    }
+  }
 
   void nextTest() {
     testIndex++;
