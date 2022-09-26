@@ -38,6 +38,13 @@ class _TestPageState extends State<TestPage> {
                       Navigator.of(context).pop();
                     }
                   },
+                  onReject: () {
+                    if (context.read<TesteBloc>().hasNextTest) {
+                      context.read<TesteBloc>().nextTest();
+                    } else {
+                      Navigator.of(context).pop();
+                    }
+                  },
                   ishiharaData: state.testData.target,
                 ),
                 Flexible(
@@ -116,12 +123,14 @@ class _OptionImage extends StatelessWidget {
 class Alvo extends StatelessWidget {
   const Alvo({
     required this.onSuccess,
+    required this.onReject,
     required this.ishiharaData,
     Key? key,
   }) : super(key: key);
 
   final IshiharaData ishiharaData;
   final Function() onSuccess;
+  final Function() onReject;
 
   @override
   Widget build(BuildContext context) {
@@ -142,10 +151,15 @@ class Alvo extends StatelessWidget {
               return Container();
             },
             onWillAccept: (resposta) {
-              return resposta == ishiharaData;
+              return resposta is IshiharaData;
             },
-            onAccept: (color) {
-              onSuccess();
+            onAccept: (resposta) {
+              //return resposta == ishiharaData;
+              if (resposta == ishiharaData) {
+                onSuccess();
+              }else{
+                onReject();
+              }
             },
           ),
         )
