@@ -5,7 +5,7 @@ import 'package:tcc/test_page.dart';
 import 'package:tcc/teste_bloc.dart';
 import 'package:tcc/tutorial_page.dart';
 
-import 'app_images.dart';
+import 'app_assets.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key, required this.title}) : super(key: key);
@@ -26,7 +26,7 @@ class _IntroPageState extends State<IntroPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Image.asset(
-                AppImages.appIcon,
+                AppAssets.appIcon,
                 height: 300,
                 width: 300,
               ),
@@ -43,7 +43,7 @@ class _IntroPageState extends State<IntroPage> {
                       }));
                     },
                     icon:
-                        Image.asset(AppImages.playIcon, width: 50, height: 50),
+                        Image.asset(AppAssets.playIcon, width: 50, height: 50),
                     label: const Text(
                       "Iniciar Teste",
                       style: TextStyle(color: Colors.black),

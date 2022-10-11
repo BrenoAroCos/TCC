@@ -1,70 +1,70 @@
-import 'package:tcc/app_images.dart';
+import 'package:tcc/app_assets.dart';
 import 'package:tcc/ishihara_data.dart';
 import 'package:tcc/test_data.dart';
 
 final eSino =
-    IshiharaData(pictureAsset: AppImages.sino, ishiharaAsset: AppImages.eSino);
+    IshiharaData(pictureAsset: AppAssets.sino, ishiharaAsset: AppAssets.eSino);
 final gAviao1 =
-    IshiharaData(pictureAsset: AppImages.aviao, ishiharaAsset: AppImages.gAviao1);
+    IshiharaData(pictureAsset: AppAssets.aviao, ishiharaAsset: AppAssets.gAviao1);
 final gPicole2 =
-    IshiharaData(pictureAsset: AppImages.picole, ishiharaAsset: AppImages.gPicole2);
+    IshiharaData(pictureAsset: AppAssets.picole, ishiharaAsset: AppAssets.gPicole2);
 final gGalinha3 =
-    IshiharaData(pictureAsset: AppImages.galinha, ishiharaAsset: AppImages.gGalinha3);
+    IshiharaData(pictureAsset: AppAssets.galinha, ishiharaAsset: AppAssets.gGalinha3);
 final pCaneca =
-    IshiharaData(pictureAsset: AppImages.caneca, ishiharaAsset: AppImages.pCaneca);
+    IshiharaData(pictureAsset: AppAssets.caneca, ishiharaAsset: AppAssets.pCaneca);
 final dCamisa =
-    IshiharaData(pictureAsset: AppImages.camisa, ishiharaAsset: AppImages.dCamisa);
+    IshiharaData(pictureAsset: AppAssets.camisa, ishiharaAsset: AppAssets.dCamisa);
 final eEspatula =
-    IshiharaData(pictureAsset: AppImages.espatula, ishiharaAsset: AppImages.eEspatula);
+    IshiharaData(pictureAsset: AppAssets.espatula, ishiharaAsset: AppAssets.eEspatula);
 final gBaguete1 =
-    IshiharaData(pictureAsset: AppImages.baguete, ishiharaAsset: AppImages.gPao1);
+    IshiharaData(pictureAsset: AppAssets.baguete, ishiharaAsset: AppAssets.gPao1);
 final gPera2 =
-    IshiharaData(pictureAsset: AppImages.pera, ishiharaAsset: AppImages.gPera2);
+    IshiharaData(pictureAsset: AppAssets.pera, ishiharaAsset: AppAssets.gPera2);
 final gBorboleta3 =
-    IshiharaData(pictureAsset: AppImages.borboleta, ishiharaAsset: AppImages.gBorboleta3);
+    IshiharaData(pictureAsset: AppAssets.borboleta, ishiharaAsset: AppAssets.gBorboleta3);
 final pAviao =
-    IshiharaData(pictureAsset: AppImages.aviao, ishiharaAsset: AppImages.pAviao);
+    IshiharaData(pictureAsset: AppAssets.aviao, ishiharaAsset: AppAssets.pAviao);
 final dPicole =
-    IshiharaData(pictureAsset: AppImages.picole, ishiharaAsset: AppImages.dPicole);
+    IshiharaData(pictureAsset: AppAssets.picole, ishiharaAsset: AppAssets.dPicole);
 final eRolo =
-    IshiharaData(pictureAsset: AppImages.rolo, ishiharaAsset: AppImages.eRolo);
+    IshiharaData(pictureAsset: AppAssets.rolo, ishiharaAsset: AppAssets.eRolo);
 final gSino1 =
-    IshiharaData(pictureAsset: AppImages.sino, ishiharaAsset: AppImages.gSino1);
+    IshiharaData(pictureAsset: AppAssets.sino, ishiharaAsset: AppAssets.gSino1);
 final gCamisa2 =
-    IshiharaData(pictureAsset: AppImages.camisa, ishiharaAsset: AppImages.gCamisa2);
+    IshiharaData(pictureAsset: AppAssets.camisa, ishiharaAsset: AppAssets.gCamisa2);
 final gAviao3 =
-    IshiharaData(pictureAsset: AppImages.aviao, ishiharaAsset: AppImages.gAviao3);
+    IshiharaData(pictureAsset: AppAssets.aviao, ishiharaAsset: AppAssets.gAviao3);
 final pTesoura =
-    IshiharaData(pictureAsset: AppImages.tesoura, ishiharaAsset: AppImages.pTesoura);
+    IshiharaData(pictureAsset: AppAssets.tesoura, ishiharaAsset: AppAssets.pTesoura);
 final dRolo =
-    IshiharaData(pictureAsset: AppImages.rolo, ishiharaAsset: AppImages.dRolo);
+    IshiharaData(pictureAsset: AppAssets.rolo, ishiharaAsset: AppAssets.dRolo);
 final nTesoura =
-    IshiharaData(pictureAsset: AppImages.tesoura, ishiharaAsset: AppImages.nTesoura);
+    IshiharaData(pictureAsset: AppAssets.tesoura, ishiharaAsset: AppAssets.nTesoura);
 
 final aviao =
-    IshiharaData(pictureAsset: AppImages.aviao, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.aviao, ishiharaAsset: null);
 final baguete =
-    IshiharaData(pictureAsset: AppImages.baguete, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.baguete, ishiharaAsset: null);
 final borboleta =
-    IshiharaData(pictureAsset: AppImages.borboleta, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.borboleta, ishiharaAsset: null);
 final camiseta =
-    IshiharaData(pictureAsset: AppImages.camisa, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.camisa, ishiharaAsset: null);
 final caneca =
-    IshiharaData(pictureAsset: AppImages.caneca, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.caneca, ishiharaAsset: null);
 final espatula =
-    IshiharaData(pictureAsset: AppImages.espatula, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.espatula, ishiharaAsset: null);
 final galinha =
-    IshiharaData(pictureAsset: AppImages.galinha, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.galinha, ishiharaAsset: null);
 final pera =
-    IshiharaData(pictureAsset: AppImages.pera, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.pera, ishiharaAsset: null);
 final picole =
-    IshiharaData(pictureAsset: AppImages.picole, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.picole, ishiharaAsset: null);
 final rolo =
-    IshiharaData(pictureAsset: AppImages.rolo, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.rolo, ishiharaAsset: null);
 final sino =
-    IshiharaData(pictureAsset: AppImages.sino, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.sino, ishiharaAsset: null);
 final tesoura =
-    IshiharaData(pictureAsset: AppImages.tesoura, ishiharaAsset: null);
+    IshiharaData(pictureAsset: AppAssets.tesoura, ishiharaAsset: null);
 
 final List<TestData> testCases = [
   TestData(

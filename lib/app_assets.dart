@@ -1,4 +1,4 @@
-class AppImages {
+class AppAssets {
   //Base images
   static const String aviao = 'images/baseImages/Aviao.png';
   static const String baguete = 'images/baseImages/Baguete.png';
@@ -100,4 +100,8 @@ class AppImages {
   static const String appIcon = 'images/generalIcons/App icon.png';
   static const String playIcon = 'images/generalIcons/playIcon.png';
   static const String skipIcon = 'images/generalIcons/skipIcon.png';
+
+  //Tutorial assets
+  static const String tutorialGif1 = 'instructionsAssets/gifs/Tutorial1.gif';
+  static const String tutorialAudio1 = 'audios/Teste.mp3';
 }

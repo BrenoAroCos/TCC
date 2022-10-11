@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tcc/app_images.dart';
+import 'package:tcc/app_assets.dart';
 import 'package:tcc/ishihara_data.dart';
 import 'package:tcc/result_page.dart';
 import 'package:tcc/teste_bloc.dart';
@@ -65,7 +65,7 @@ class _TestPageState extends State<TestPage> {
                         context.read<TesteBloc>().onFailure();
                         checkForNextPage();
                       },
-                      icon: Image.asset(AppImages.skipIcon, width: 50, height: 50),
+                      icon: Image.asset(AppAssets.skipIcon, width: 50, height: 50),
                       label: const Text(
                         "Pular",
                         style: TextStyle(color: Colors.black),

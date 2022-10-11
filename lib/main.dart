@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tcc/app_images.dart';
+import 'package:tcc/app_assets.dart';
 import 'package:tcc/teste_bloc.dart';
 
 import 'intro_page.dart';
