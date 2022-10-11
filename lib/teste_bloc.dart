@@ -98,26 +98,6 @@ class TesteBloc extends Cubit<TesteState> {
     return result;
   }
 
-  String get getResultString {
-    PossibleResults result = analyseResults();
-    String resultadoMsg;
-    if (result == PossibleResults.semDautonismo) {
-      resultadoMsg = "Não foi identificado nenhum tipo de dautonismo no usuario.";
-    } else if (result == PossibleResults.invalido) {
-      resultadoMsg = "As instruções do teste não foram seguidas corretamente, por favor, refaça o teste seguindo as instruções apresentadas no início do teste.";
-    } else if (result == PossibleResults.tipoNaoIdentificado) {
-      resultadoMsg =
-          "É possível que você possua algum tipo de dautonismo, porém não foi possível identificar qual exatamente.\nÉ recomendada a consulta com um especialista para obter um diagnóstico oficial.";
-    } else {
-      String tipoDautonismoMsg = "";
-      if (result == PossibleResults.protanopia) tipoDautonismoMsg = "Protanopia.";
-      if (result == PossibleResults.deuteranopia) tipoDautonismoMsg = "Deuteranopia.";
-      if (result == PossibleResults.anomalia) tipoDautonismoMsg = "Tricromacia Anômala (dautonismo leve).";
-      resultadoMsg = "Foi identificado o seguinte tipo de dautonismo:" "\n\n$tipoDautonismoMsg\n\n" "É recomendada a consulta com um especialista para obter um diagnóstico oficial.";
-    }
-    return resultadoMsg;
-  }
-
   void nextTest() {
     testIndex++;
     _generateTest(testCases[testIndex]);
