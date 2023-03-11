@@ -51,17 +51,6 @@ class TesteBloc extends Cubit<TesteState> {
     }
   }
 
-  bool isAnomalia(int protanopia, int deuteranopia, int anomalia) {
-    int pAnomalia = protanopia - anomalia;
-    int dAnomalia = deuteranopia - anomalia;
-    if (pAnomalia > 2 || dAnomalia > 2) {
-      //Esta verificação parte do pressuposto que a probabilidade da criança errar apenas 1 placa de anomalia, enquanto erra 3 ou mais placas que verificam ambos os tipos de dautonismo é extremamente baixa, dessa forma, não é relevante verificar quantas placas de anomalias que foram verificadas.
-      return false;
-    } else {
-      return true;
-    }
-  }
-
   PossibleResults analyseResults() {
     PossibleResults result;
     if (resultData.everyoneSees >= 2) {
@@ -96,6 +85,17 @@ class TesteBloc extends Cubit<TesteState> {
       }
     }
     return result;
+  }
+
+  bool isAnomalia(int protanopia, int deuteranopia, int anomalia) {
+    int pAnomalia = protanopia - anomalia;
+    int dAnomalia = deuteranopia - anomalia;
+    if (pAnomalia > 2 || dAnomalia > 2) {
+      //Esta verificação parte do pressuposto que a probabilidade da criança errar apenas 1 placa de anomalia, enquanto erra 3 ou mais placas que verificam ambos os tipos de dautonismo é extremamente baixa, dessa forma, não é relevante verificar quantas placas de anomalias que foram verificadas.
+      return false;
+    } else {
+      return true;
+    }
   }
 
   void nextTest() {

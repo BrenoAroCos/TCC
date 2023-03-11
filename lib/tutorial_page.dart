@@ -17,6 +17,14 @@ class TutorialPage extends StatefulWidget {
 }
 
 class _TutorialPageState extends State<TutorialPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    widget.player.setAsset(AppAssets.tutorialAudio1);
+    widget.player.play();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +66,8 @@ class _TutorialPageState extends State<TutorialPage> {
                                 child: InkWell(
                                   splashColor: Colors.lightBlueAccent,
                                   onTap:(){
-
+                                    widget.player.setAsset(AppAssets.tutorialAudio1);
+                                    widget.player.play();
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(5.0),
@@ -98,7 +107,8 @@ class _TutorialPageState extends State<TutorialPage> {
                             color: Colors.black,
                             width: 3.0,
                             style: BorderStyle.solid))),
-                  )),
+                  )
+              ),
             ],
           ),
         ),
