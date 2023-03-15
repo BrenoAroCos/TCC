@@ -103,5 +103,5 @@ class AppAssets {
 
   //Tutorial assets
   static const String tutorialGif1 = 'instructionsAssets/gifs/Tutorial1.gif';
-  static const String tutorialAudio1 = 'instructionsAssets/audio/Teste.mp3';
+  static const String tutorialAudio1 = 'audios/Teste.mp3';
 }

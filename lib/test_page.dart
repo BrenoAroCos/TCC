@@ -91,7 +91,7 @@ class _TestPageState extends State<TestPage> {
         context,
         MaterialPageRoute(
           builder: (_) {
-            return ResultPage(result: context.read<TesteBloc>().analyseResults());
+            return ResultPage(result: context.read<TesteBloc>().analyseResults(), resultData: context.read<TesteBloc>().resultData,);
           },
         ),
       );

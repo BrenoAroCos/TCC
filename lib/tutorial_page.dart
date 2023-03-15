@@ -17,11 +17,14 @@ class TutorialPage extends StatefulWidget {
 }
 
 class _TutorialPageState extends State<TutorialPage> {
-
   @override
   void initState() {
     super.initState();
-    widget.player.setAsset(AppAssets.tutorialAudio1);
+    setAndPlay();
+  }
+
+  Future<void> setAndPlay() async {
+    await widget.player.setAsset(AppAssets.tutorialAudio1);
     widget.player.play();
   }
 
@@ -34,57 +37,55 @@ class _TutorialPageState extends State<TutorialPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Spacer(),
-                  Image.asset(
-                    AppAssets.tutorialGif1,
-                    height: 300,
-                    width: 300,
-                  ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5.0),
-                              child: Icon(
-                                Icons.volume_up,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Spacer(),
+                    Image.asset(
+                      AppAssets.tutorialGif1,
+                      height: 300,
+                      width: 300,
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5.0, horizontal: 5.0),
+                          decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5.0),
+                                child: Icon(
+                                  Icons.volume_up,
+                                ),
                               ),
-                            ),
-                            ClipOval(
-                              child: Material(
-                                color: Colors.blue,
-                                child: InkWell(
-                                  splashColor: Colors.lightBlueAccent,
-                                  onTap:(){
-                                    widget.player.setAsset(AppAssets.tutorialAudio1);
-                                    widget.player.play();
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Icon(
-                                        Icons.play_arrow,
-                                    ),
-                                  )
-                                )
-                              )
-                            )
-                          ],
+                              ClipOval(
+                                  child: Material(
+                                      color: Colors.blue,
+                                      child: InkWell(
+                                          splashColor: Colors.lightBlueAccent,
+                                          onTap: () {
+                                            widget.player.setAsset(
+                                                AppAssets.tutorialAudio1);
+                                            widget.player.play();
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Icon(
+                                              Icons.play_arrow,
+                                            ),
+                                          ))))
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ]
-              ),
+                    )
+                  ]),
               SizedBox(
                   height: 80,
                   child: OutlinedButton.icon(
@@ -107,8 +108,7 @@ class _TutorialPageState extends State<TutorialPage> {
                             color: Colors.black,
                             width: 3.0,
                             style: BorderStyle.solid))),
-                  )
-              ),
+                  )),
             ],
           ),
         ),
