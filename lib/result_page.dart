@@ -43,12 +43,17 @@ class ResultPage extends StatefulWidget {
     return resultadoMsg;
   }
 
-  Future<void> shareData(ResultData data) async {
+  Future<void> shareData(BuildContext context, ResultData data) async {
     final tempDir = await getTemporaryDirectory();
     final tempPath = '${tempDir.path}/data.json';
     final file = await File(tempPath).create();
     await file.writeAsString(data.toJson().toString());
-    Share.shareXFiles([XFile(tempPath)], text: "Resultado");
+
+    Share.shareXFiles([XFile(tempPath)], text: "Resultado",
+        sharePositionOrigin: () {
+      RenderBox? box = context.findRenderObject() as RenderBox?;
+      return box!.localToGlobal(Offset.zero) & box.size;
+    }());
   }
 
   @override
@@ -90,7 +95,7 @@ class _ResultPageState extends State<ResultPage> {
             child: Center(
               child: OutlinedButton.icon(
                 onPressed: () {
-                  widget.shareData(widget.resultData);
+                  widget.shareData(context, widget.resultData, );
                 },
                 icon: Image.asset(AppAssets.aviao, width: 50, height: 50),
                 label: const Text(
